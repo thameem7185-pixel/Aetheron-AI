@@ -1,4 +1,4 @@
-# index11.html: single-file AI chat app
+# index.html: single-file AI chat app
 
 A self-contained AI chat interface in one HTML file (HTML, CSS and JavaScript, no build step, no dependencies). It is branded **Aetheron AI**. To rebrand it, change one constant.
 
@@ -73,7 +73,7 @@ If you rename the app, you may also want to rename these keys.
 
 ## File layout
 
-Everything is inside `index11.html`:
+Everything is inside `index.html`:
 
 1. `<style>`: theme variables, layout, chat, composer, sidebar, animations
 2. HTML: sidebar, top bar, chat window, input bar
