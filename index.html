@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" id="theme-color" content="#000000">
 
-<script>
-(function(){var t=null;try{t=localStorage.getItem('aetheron-theme');}catch(e){}
-t='dark';
-document.documentElement.setAttribute('data-theme',t);})();
-</script>
 <title>Aetheron</title>
 <meta name="google-site-verification" content="w0feO5K4DnBJ77LXzc716sBOY_eHKm1w5dNhVnyfSRQ" />
 <style>
@@ -489,8 +484,6 @@ document.documentElement.setAttribute('data-theme',t);})();
     :root { --glass-bg: linear-gradient(135deg, rgba(235,255,252,.96), rgba(220,250,246,.94)); --blur: 0px; }
     :root[data-theme="dark"] { --glass-bg: linear-gradient(135deg, rgba(8,48,52,.97), rgba(5,38,42,.95)); }
   }
-</style>
-<style>
   /* ═══════════════════════════════════════════════
      NOIR · WebGL black theme (overrides everything above)
      ═══════════════════════════════════════════════ */
@@ -549,7 +542,7 @@ document.documentElement.setAttribute('data-theme',t);})();
   /* toggle switch */
   .switch { background: #27272a; border-color: #3f3f46; box-shadow: none; }
   .switch::after { background: #fff; box-shadow: none; }
-  .switch.on { background: var(--ok); border-color: var(--ok); }
+  .switch.on { background: #3b82f6; border-color: #3b82f6; }
 
   /* welcome: bordered card + pulsing green status dot */
   #welcome {
@@ -594,8 +587,6 @@ document.documentElement.setAttribute('data-theme',t);})();
   .attach-chip, .chip-remove, #attach-btn.has-files { color: #fff; }
   #chat-window::-webkit-scrollbar-thumb { background: #27272a; }
   #scrim { background: rgba(0,0,0,.6) !important; }
-</style>
-<style>
   /* ═══════════════════════════════════════════════
      Dark mode · liquid-glass toggle switches
      ═══════════════════════════════════════════════ */
@@ -628,27 +619,25 @@ document.documentElement.setAttribute('data-theme',t);})();
   :root[data-theme="dark"] .switch.on {
     background:
       radial-gradient(140% 140% at 28% 0%, rgba(255,255,255,.22), rgba(255,255,255,0) 55%),
-      rgba(34,197,94,.18);
-    border-color: rgba(34,197,94,.55);
+      rgba(59,130,246,.18);
+    border-color: rgba(59,130,246,.55);
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,.28),
       inset 0 -1px 0 rgba(0,0,0,.30),
-      inset 0 0 14px rgba(34,197,94,.30),
-      0 0 16px rgba(34,197,94,.28);
+      inset 0 0 14px rgba(59,130,246,.30),
+      0 0 16px rgba(59,130,246,.28);
   }
   :root[data-theme="dark"] .switch.on::after {
     background:
-      radial-gradient(circle at 32% 26%, rgba(255,255,255,1), rgba(232,255,240,.75) 42%, rgba(180,255,210,.35) 78%),
+      radial-gradient(circle at 32% 26%, rgba(255,255,255,1), rgba(236,244,255,.75) 42%, rgba(190,215,255,.35) 78%),
       rgba(255,255,255,.25);
     border-color: rgba(255,255,255,.75);
     box-shadow:
       0 1px 4px rgba(0,0,0,.45),
-      0 0 12px rgba(34,197,94,.55),
+      0 0 12px rgba(59,130,246,.55),
       inset 0 1px 0 rgba(255,255,255,1),
       inset 0 -1px 2px rgba(0,0,0,.15);
   }
-</style>
-<style>
   /* ═══════════════════════════════════════════════════════════════
      HTML runner — SAME glass recipe as #sidebar / #topbar
      ═══════════════════════════════════════════════════════════════ */
@@ -737,8 +726,6 @@ document.documentElement.setAttribute('data-theme',t);})();
     #runner-frame { border-radius: 0; }
     body.runner-open #app { padding-right: 0; }
   }
-</style>
-<style>
 /* ═══ Lighting panel ═══ */
 .glass-card {
   width: 290px;
@@ -837,15 +824,13 @@ document.documentElement.setAttribute('data-theme',t);})();
 .glass-card .dropdown-item { user-select: none; }
 .glass-card.collapsed .card-body { display: none; }
 #sidebar { overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; }
-</style>
-<style>
 /* ═══ Settings sheet ═══ */
 #settings-overlay {
   position: fixed; inset: 0; z-index: 1000;
   display: flex; align-items: center; justify-content: center;
   padding: 18px;
-  background: rgba(0, 0, 0, .62);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  background: transparent;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity .22s ease, visibility .22s ease;
 }
@@ -859,6 +844,7 @@ document.documentElement.setAttribute('data-theme',t);})();
   border: 1px solid var(--line, #27272a);
   border-radius: 18px;
   overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,.65);
   transform: translateY(14px) scale(.985);
   transition: transform .28s cubic-bezier(.3,.8,.3,1);
 }
@@ -882,9 +868,15 @@ document.documentElement.setAttribute('data-theme',t);})();
 
 @media (max-width: 520px) {
   #settings-overlay { padding: 0; align-items: flex-end; }
-  #settings-panel { width: 100%; max-height: 88vh; border-radius: 18px 18px 0 0; border-bottom: 0; transform: translateY(100%); }
+  #settings-panel { width: 100%; max-height: 56vh; border-radius: 18px 18px 0 0; border-bottom: 0; transform: translateY(100%); }
   #settings-overlay.open #settings-panel { transform: none; }
 }
+
+  /* toggle knob: exact centring (border-box + vertical centre) */
+  .switch::after, :root[data-theme="dark"] .switch::after { box-sizing: border-box; top: 50%; left: 2px; width: 18px; height: 18px; transform: translateY(-50%); }
+  .switch.on::after, :root[data-theme="dark"] .switch.on::after { transform: translate(16px, -50%); }
+  .think-note, .live-note { font-size: .78rem; color: var(--muted); margin: 8px 6px 0; line-height: 1.4; }
+  .live-note[hidden] { display: none; }
 </style>
 </head>
 <body>
@@ -1116,6 +1108,7 @@ document.documentElement.setAttribute('data-theme',t);})();
     </div>
   </div>
 </div>
+
 
 <script>
 const WORKER_URL = 'https://nuxus3211.thameem7185.workers.dev';
@@ -1453,7 +1446,7 @@ function buildAttachmentContext() {
 async function sendMessage() {
   const input = document.getElementById('msg-input');
   const text = input.value.trim();
-  if (isTyping) { skipTyping = true; return; }
+  if (isTyping) { skipTyping = true; if (currentAbort) currentAbort.abort(); return; }
   if ((!text && !attachedFiles.length) || isThinking) return;
 
   const pendingFiles = attachedFiles.filter(f => f.isText && !f.loaded);
@@ -1939,48 +1932,228 @@ async function retryLast(btn) {
 window.addEventListener('offline', () => showToast("You're offline"));
 window.addEventListener('online',  () => showToast('Back online'));
 
-/* Requests wait as long as the server needs — nothing is aborted on a timer. */
+/* ── Long replies: never give up on a slow request ────────────────────────────
+   • streams the reply when the Worker supports it (bytes keep flowing, so nothing idles out)
+   • retries dropped connections and gateway time-outs automatically, with back-off
+   • if a stream dies half-way (or the model hits its length limit) it silently asks the
+     model to continue and keeps appending to the SAME message
+   • keeps the screen awake while it works and waits for the network to come back      */
+const MAX_TRIES = 5;           // attempts per request
+const MAX_CONTINUES = 8;       // automatic "continue" rounds for one reply
+const RETRY_STATUS = new Set([408, 425, 429, 500, 502, 503, 504, 520, 521, 522, 523, 524, 525, 526, 527, 530]);
+const DONE_RE = /\n?\[\[AETHERON_DONE:(\w+)\]\]\s*$/;
+let currentAbort = null, wakeLock = null;
+
+async function holdAwake() {
+  try { if ('wakeLock' in navigator && !wakeLock) { wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => { wakeLock = null; }); } } catch (e) {}
+}
+function releaseAwake() { try { if (wakeLock) wakeLock.release(); } catch (e) {} wakeLock = null; }
+document.addEventListener('visibilitychange', () => { if (!document.hidden && isThinking) holdAwake(); });
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+function waitOnline(max) {
+  if (navigator.onLine) return Promise.resolve();
+  return new Promise(res => {
+    const t = setTimeout(res, max);
+    window.addEventListener('online', () => { clearTimeout(t); res(); }, { once: true });
+  });
+}
+function setThinkNote(el, text) {
+  if (!el || !el.isConnected) return;
+  let n = el.querySelector('.think-note');
+  if (!n) { n = document.createElement('div'); n.className = 'think-note'; el.appendChild(n); }
+  n.textContent = text;
+}
+
+async function fetchWithRetry(message, signal, onWait) {
+  let last;
+  for (let n = 1; n <= MAX_TRIES; n++) {
+    try {
+      await waitOnline(60000);
+      const resp = await fetch(WORKER_URL, {
+        method: 'POST', signal,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message, systemPrompt: getSystemPrompt(), stream: true })
+      });
+      if (resp.ok) return resp;
+      const err = await resp.json().catch(() => ({}));
+      last = new Error(err?.message || err?.error || `HTTP ${resp.status}`);
+      last.status = resp.status;
+      if (!RETRY_STATUS.has(resp.status)) { last.fatal = true; throw last; }
+    } catch (e) {
+      if (e.fatal || e.name === 'AbortError') throw e;
+      last = last && e === last ? last : e;
+    }
+    if (n < MAX_TRIES) { if (onWait) onWait(n + 1); await sleep(Math.min(1500 * 2 ** (n - 1), 10000)); }
+  }
+  throw last || new Error('network');
+}
+
+// reads a streamed reply; the Worker ends it with [[AETHERON_DONE:stop|length]]
+async function readStream(resp, onText) {
+  const reader = resp.body.getReader(), dec = new TextDecoder();
+  let got = '';
+  const visible = t => { const i = t.lastIndexOf('\n[[AETHERON'); return i >= 0 ? t.slice(0, i) : t; };
+  try {
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      got += dec.decode(value, { stream: true });
+      onText(visible(got));
+    }
+    got += dec.decode();
+  } catch (e) {
+    return { text: visible(got), end: e.name === 'AbortError' ? 'aborted' : 'dropped' };
+  }
+  const m = got.match(DONE_RE);
+  return m ? { text: got.replace(DONE_RE, ''), end: m[1] === 'length' ? 'length' : 'stop' }
+           : { text: got, end: 'dropped' };
+}
+
+// glue a continuation onto what we already have, removing any repeated overlap
+function joinContinuation(a, b) {
+  const max = Math.min(300, a.length, b.length);
+  for (let k = max; k >= 12; k--) if (a.endsWith(b.slice(0, k))) return a + b.slice(k);
+  return a + b;
+}
+function buildContinuePrompt(original, soFar) {
+  return original +
+    '\n\n---\nYour previous reply was cut off before it finished. This is the last part you wrote:\n<<<\n' +
+    soFar.slice(-2500) +
+    '\n>>>\nContinue EXACTLY from the last character: do not repeat anything, no preamble, no explanation. ' +
+    'If you were inside a code block, keep going inside it and close it when the code is complete.';
+}
+
+// the message bubble that fills in live while a reply streams
+function createLiveMessage() {
+  const win = document.getElementById('chat-window');
+  const sendBtn = document.getElementById('send-btn');
+  const sendHtml = sendBtn.innerHTML;
+  const div = document.createElement('div');
+  div.className = 'msg assistant generating';
+  const uid = ++msgUid;
+  rawMessageStore[uid] = '';
+  div.innerHTML = `<div class="bubble"></div>
+    <div class="live-note" hidden></div>
+    <div class="msg-actions pending">
+      <button class="icon-btn sm" onclick="copyMessageText(this, ${uid})" title="Copy" aria-label="Copy">${ICON_COPY}</button>
+      <button class="icon-btn sm msg-speak-btn" onclick="speakMessage(this, ${uid})" title="Read aloud" aria-label="Read aloud">${ICON_SPEAK}</button>
+    </div>`;
+  win.appendChild(div);
+  const bubble = div.querySelector('.bubble'), note = div.querySelector('.live-note'), actions = div.querySelector('.msg-actions');
+
+  isTyping = true; skipTyping = false;                 // the send button becomes Stop
+  sendBtn.innerHTML = ICON_STOP_TYPING; sendBtn.disabled = false; sendBtn.title = 'Stop';
+
+  let latest = '', timer = null;
+  function render(text, final) {
+    // code blocks get a fresh id on every render — free the old ones so long replies don't pile up in memory
+    bubble.querySelectorAll('pre[id]').forEach(p => { delete codeSnippetStore[p.id]; });
+    let part = text;
+    if ((part.match(/```/g) || []).length % 2) part += '\n```';
+    bubble.innerHTML = renderMarkdown(part);
+    if (!final) placeBall(bubble);
+    if (win.scrollHeight - win.scrollTop - win.clientHeight < 160) win.scrollTop = win.scrollHeight;
+  }
+  function restoreButton() { sendBtn.innerHTML = sendHtml; sendBtn.title = 'Send'; isTyping = false; skipTyping = false; }
+  return {
+    update(text) {
+      latest = text;
+      if (timer) return;
+      const gap = latest.length > 40000 ? 700 : latest.length > 15000 ? 400 : 150;
+      timer = setTimeout(() => { timer = null; render(latest, false); }, gap);
+    },
+    note(msg) { note.hidden = !msg; note.textContent = msg || ''; },
+    finish(text) {
+      clearTimeout(timer); timer = null;
+      render(text, true);
+      rawMessageStore[uid] = text;
+      note.hidden = true;
+      actions.classList.remove('pending'); div.classList.remove('generating');
+      restoreButton();
+      if (autoVoiceMode) speakText(text, div.querySelector('.msg-speak-btn'));
+    },
+    remove() { clearTimeout(timer); div.remove(); restoreButton(); }
+  };
+}
+
 async function callCohere() {
-  setBusy(true);
+  setBusy(true); holdAwake();
   const thinkingEl = showThinking();
+  const t0 = Date.now();
+  const tick = setInterval(() => {
+    const s = Math.floor((Date.now() - t0) / 1000);
+    if (s >= 8) setThinkNote(thinkingEl, `Still working… ${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}` +
+      (s >= 45 ? ' · long replies can take a few minutes, keep this tab open' : ''));
+  }, 1000);
+  const ctrl = new AbortController();
+  currentAbort = ctrl;
+  const original = messages[messages.length - 1]?.content || '';
+  let live = null, full = '', pushed = false, incomplete = false;
+
+  const keep = () => { if (pushed || !full) return; pushed = true; messages.push({ role: 'assistant', content: full }); msgCount++; };
 
   try {
-    if (!navigator.onLine) throw new Error('offline');
-    const lastUserMsg = messages[messages.length - 1]?.content || '';
+    let message = original, rounds = 0;
+    for (;;) {
+      const resp = await fetchWithRetry(message, ctrl.signal, n => {
+        const txt = `Connection hiccup — retrying (${n}/${MAX_TRIES})…`;
+        if (live) live.note(txt); else setThinkNote(thinkingEl, txt);
+      });
+      if (live) live.note('');
 
-    const resp = await fetch(WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        message: lastUserMsg,
-        systemPrompt: getSystemPrompt()
-      })
-    });
+      const ct = resp.headers.get('content-type') || '';
+      if (/json/i.test(ct) || !resp.body) {              // classic Worker: one JSON reply
+        const data = await resp.json().catch(() => null);
+        if (data === null) { if (!live) { thinkingEl.remove(); showError('The reply came back unreadable. Please try again.'); return; } incomplete = true; break; }
+        const text = typeof data === 'string' ? data : (data.text || data.message || JSON.stringify(data));
+        if (!live) {
+          thinkingEl.remove();
+          messages.push({ role: 'assistant', content: text }); pushed = true; msgCount++;
+          await typeMessage(text);
+          return;
+        }
+        full = joinContinuation(full, text);
+        break;
+      }
 
-    if (!resp.ok) {
-      const err = await resp.json().catch(() => ({}));
-      const errMsg = err?.message || err?.error || `HTTP ${resp.status}`;
-      thinkingEl.remove();
-      showError(`Something went wrong (${errMsg}).`);
-      return;
+      if (!live) { thinkingEl.remove(); live = createLiveMessage(); }
+      const base = full;
+      const r = await readStream(resp, t => live.update(base ? joinContinuation(base, t) : t));
+      full = base ? joinContinuation(base, r.text) : r.text;
+      live.update(full);
+      if (r.end === 'stop' || r.end === 'aborted') break;
+
+      // 'dropped' (connection died) or 'length' (hit the model's limit): carry on where it stopped
+      if (++rounds > MAX_CONTINUES) { incomplete = true; break; }
+      live.note(r.end === 'length' ? 'Reply is long — continuing…' : 'Connection interrupted — resuming…');
+      await sleep(800);
+      message = full ? buildContinuePrompt(original, full) : original;
     }
 
-    const data = await resp.json().catch(() => null);
-    thinkingEl.remove();
-    if (data === null) { showError('The reply came back unreadable. Please try again.'); return; }
-    const text = typeof data === 'string' ? data : (data.text || data.message || JSON.stringify(data));
-
-    messages.push({ role: 'assistant', content: text });
-    msgCount++;
-    await typeMessage(text);
-
+    if (live) {
+      if (full) { live.finish(full); keep(); if (incomplete) showToast('The reply may be incomplete — type "continue" to resume'); }
+      else live.remove();
+    }
   } catch (e) {
     thinkingEl.remove();
-    const m = (!navigator.onLine || e.message === 'offline')
-      ? 'No internet connection. Check your network and try again.'
-      : "Couldn't reach the server. Check your connection and try again.";
-    showError(m);
+    if (live) { if (full) { live.finish(full); keep(); } else live.remove(); }
+    if (e.name === 'AbortError') {
+      /* user pressed Stop — keep whatever arrived */
+    } else if (e.fatal) {
+      showError(`Something went wrong (${e.message}).`);
+    } else if (e.status === 524 || e.status === 504) {
+      showError(`The server timed out (HTTP ${e.status}) on a long reply. Tap Retry — and make sure the Worker streams its answer (see worker.js).`);
+    } else {
+      const m = (!navigator.onLine || e.message === 'offline')
+        ? 'No internet connection. Check your network and tap Retry.'
+        : "Couldn't reach the server after several tries. Check your connection and tap Retry.";
+      showError(m);
+    }
   } finally {
+    clearInterval(tick);
+    currentAbort = null;
+    releaseAwake();
     setBusy(false);
   }
 }
@@ -2200,10 +2373,7 @@ function showToast(msg) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
 }
-
-</script>
-
-<script>
+;
 // liquid-glass: light follows the pointer across glass surfaces
 (function () {
   const SEL = '#sidebar,#topbar,#input-bar,.msg .bubble,.chip,.new-chat,.mode-btn,.row-btn,.retry-btn,.attach-chip';
@@ -2284,8 +2454,7 @@ function runnerDownload() { if (runnerId) downloadCode(runnerId, 'html'); }
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && document.getElementById('runner').classList.contains('open')) closeRunner();
 });
-</script>
-<script>
+;
 // ── Settings sheet ──
 (function () {
   var overlay = document.getElementById('settings-overlay');
@@ -2306,8 +2475,7 @@ document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && overlay.classList.contains('open')) closeSettings();
   });
 })();
-</script>
-<script>
+;
 // ── Lighting panel: drives the WebGL wave background + glass blur ──
 (function () {
   var card = document.getElementById('light-panel');
